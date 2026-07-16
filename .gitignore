@@ -1,0 +1,56 @@
+# =========================
+# Dependencies
+# =========================
+node_modules/
+**/node_modules/
+
+# =========================
+# Environment Variables
+# =========================
+.env
+**/.env
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+
+# =========================
+# Build Output
+# =========================
+dist/
+build/
+
+# =========================
+# OS Files
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDE Files
+# =========================
+.vscode/
+.idea/
+
+# =========================
+# Uploads
+# =========================
+server/src/uploads/products/*
+server/src/uploads/sheets/*
+
+# Keep upload folders
+!server/src/uploads/products/.gitkeep
+!server/src/uploads/sheets/.gitkeep
+
+# =========================
+# Coverage
+# =========================
+coverage/
+
+# =========================
+# Temporary Files
+# =========================
+*.tmp
+*.temp
