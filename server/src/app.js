@@ -2,37 +2,20 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+
 import authRouter from "./routes/auth.router.js";
-import healthRouter from "./routes/health.router.js";
 
 const app = express();
 
-// Use the authentication router
-app.use("/auth", authRouter);
-app.use("/api/v1/health", healthRouter);
-
-/**
- * Global Middlewares
- */
-
-// Parse incoming JSON requests
+/* Middlewares FIRST */
 app.use(express.json());
-
-// Parse URL-encoded form data
 app.use(express.urlencoded({ extended: true }));
-
-// Enable Cross-Origin Resource Sharing
 app.use(cors());
-
-// Secure common HTTP headers
 app.use(helmet());
-
-// Log HTTP requests
 app.use(morgan("dev"));
 
-/**
- * Default Route
- */
+/* Routes AFTER middleware */
+app.use("/api/v1/auth", authRouter);
 
 app.get("/", (req, res) => {
   res.json({

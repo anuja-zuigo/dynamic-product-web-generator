@@ -51,3 +51,14 @@ export const login = async (req, res, next) => {
     next(error);
   }
 };
+export const getProfile = async (req, res, next) => {
+  try {
+    return res.status(200).json({
+      success: true,
+      message: "Profile fetched successfully.",
+      data: req.user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};

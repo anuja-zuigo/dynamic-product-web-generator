@@ -28,7 +28,7 @@ export const signupService = async ({ fullName, email, password }) => {
     fullName,
     email,
     passwordHash,
-    provider: "local",
+    provider: "EMAIL",
   });
 
   // Generate JWT

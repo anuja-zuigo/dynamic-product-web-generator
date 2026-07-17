@@ -1,8 +1,10 @@
 import { Router } from "express";
+import authMiddleware from "../middleware/auth.middleware.js";
 
 import {
   signup,
   login,
+  getProfile
 } from "../controllers/auth.controller.js";
 
 import {
@@ -15,5 +17,11 @@ const router = Router();
 router.post("/signup", signupValidator, signup);
 
 router.post("/login", loginValidator, login);
+
+router.get(
+  "/profile",
+  authMiddleware,
+  getProfile
+);
 
 export default router;
