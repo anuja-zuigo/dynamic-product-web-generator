@@ -62,3 +62,13 @@ export const getProfile = async (req, res, next) => {
     next(error);
   }
 };
+export const logout = async (req, res, next) => {
+  try {
+    return res.status(200).json({
+      success: true,
+      message: "Logout successful. Please remove the token from the client.",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
