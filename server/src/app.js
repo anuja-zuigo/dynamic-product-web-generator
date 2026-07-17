@@ -2,8 +2,14 @@ import express from "express";
 import cors from "cors";
 import helmet from "helmet";
 import morgan from "morgan";
+import authRouter from "./routes/auth.router.js";
+import healthRouter from "./routes/health.router.js";
 
 const app = express();
+
+// Use the authentication router
+app.use("/auth", authRouter);
+app.use("/api/v1/health", healthRouter);
 
 /**
  * Global Middlewares
