@@ -12,7 +12,9 @@ const generateToken = (userId) => {
   );
 };
 
-export const signupService = async ({ fullName, email, password }) => {
+export const signupService = async ({ fullName, name, email, password }) => {
+  const userName = fullName || name || "User";
+
   // Check if user already exists
   const existingUser = await User.findOne({ email });
 
@@ -25,7 +27,7 @@ export const signupService = async ({ fullName, email, password }) => {
 
   // Create user
   const user = await User.create({
-    fullName,
+    fullName: userName,
     email,
     passwordHash,
     provider: "EMAIL",

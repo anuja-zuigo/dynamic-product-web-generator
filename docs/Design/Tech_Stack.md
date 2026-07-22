@@ -211,6 +211,7 @@ Benefits
 
 The application supports both Email Authentication and Google OAuth.
 
+
 ## Technology Selected
 
 JWT + bcrypt

@@ -1,12 +1,13 @@
 import { body } from "express-validator";
 
 export const signupValidator = [
-  body("fullName")
-    .trim()
-    .notEmpty()
-    .withMessage("Full name is required.")
-    .isLength({ min: 3, max: 50 })
-    .withMessage("Full name must be between 3 and 50 characters."),
+  body().custom((value, { req }) => {
+    const userName = req.body.fullName || req.body.name;
+    if (!userName || userName.trim().length < 2 || userName.trim().length > 50) {
+      throw new Error("Full name must be between 2 and 50 characters.");
+    }
+    return true;
+  }),
 
   body("email")
     .trim()
@@ -19,8 +20,8 @@ export const signupValidator = [
   body("password")
     .notEmpty()
     .withMessage("Password is required.")
-    .isLength({ min: 8, max: 32 })
-    .withMessage("Password must be between 8 and 32 characters.")
+    .isLength({ min: 6, max: 32 })
+    .withMessage("Password must be at least 6 characters.")
 ];
 
 export const loginValidator = [

@@ -16,6 +16,7 @@ import {
 const router = Router();
 
 router.post("/signup", signupValidator, signup);
+router.post("/register", signupValidator, signup);
 
 router.post("/login", loginValidator, login);
 
